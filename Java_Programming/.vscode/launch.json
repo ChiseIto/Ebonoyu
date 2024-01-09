@@ -1,0 +1,61 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Client",
+            "request": "launch",
+            "mainClass": "Ebonoyu.GUIChat.Client",
+            "projectName": "Java_Programming_af73a01e"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "Ebonoyu.GUIChat.Server",
+            "projectName": "Java_Programming_af73a01e"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "args": [
+                "127.0.0.1",
+                "16000"
+            ],
+            "type": "java",
+            "name": "ChatClient",
+            "request": "launch",
+            "mainClass": "Ebonoyu.Chat.ChatClient",
+            "projectName": "Java_Programming_af73a01e"
+        },
+        {
+            "args": "16000",
+            "type": "java",
+            "name": "ChatServer",
+            "request": "launch",
+            "mainClass": "Ebonoyu.Chat.ChatServer",
+            "projectName": "Java_Programming_af73a01e"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "Ebonoyu.JFrame.App",
+            "projectName": "Java_Programming_af73a01e"
+        },
+        {
+            "type": "java",
+            "name": "JSample9_1",
+            "request": "launch",
+            "mainClass": "Ebonoyu.JFrame.JSample9_1",
+            "projectName": "Java_Programming_af73a01e"
+        }
+    ]
+}
