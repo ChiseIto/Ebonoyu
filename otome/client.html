@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="design.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title> WebSocket通信 </title>
+        <script type="text/javascript">
+            var point = 0;
+            // Web Socketオブジェクト生成
+            var webSocket = new WebSocket("ws://127.0.0.1:30000");
+            webSocket.onopen = function() {
+            document.getElementById('show').innerHTML += "接続しました。" + "<br/>";
+                if(point < 100) {
+                    // onmessageリスナー
+                    webSocket.onmessage = function(event) {
+                        // 取得＆表示
+                        document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
+                    }
+                    if(event.data == "好き") {
+                        point += 10;
+                    }
+                    else if(event.data == "大好き") {
+                        point += 20;
+                    }
+                    else if(event.data == "愛してる") {
+                        point += 100;
+                    }
+                }
+                else {
+                    document.getElementById('show').innerHTML += "面白れぇ女..." + "<br/>";
+                }
+            };
+            var sendMsg = function(val) {
+                var inputElement = document.getElementById('msg');
+                // 送信
+                webSocket.send(inputElement.value);
+                // クリア
+                inputElement.value = "";
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="menu">
+            <ul>
+                <li><a href="default.asp">Room</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
+        </div>
+        
+        <script>
+            function changeGaugeValue() {
+              const gaugeValue = document.querySelector(".gauge-value");
+              const newValue = point;
+              gaugeValue.style.width = newValue + "%";
+            }
+        </script>
+        <div class="gauge">
+            <div class="gauge-value" style="width:0%;"></div>
+        </div>
+
+        <div class="content">
+            <div class="ikemen">
+                <img src="ikemen.png" alt="">
+            </div>
+
+            <div class="client">
+                <div class="text">
+                    <div style="width:500px;height:200px;
+                        overflow-y:auto;border:1px solid #333;" id="show"></div>
+                    <input type="text" size="80" id="msg" name="msg" />
+                    <input type="button" value="送信" onclick="sendMsg(); changeGaugeValue();" />
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
