@@ -40,7 +40,8 @@ public class ChatServer {
 }
 
 /**
- *  スレッド処理
+ * スレッド処理
+ * 
  * @author liguofeng
  */
 class ServerThread extends Thread {
@@ -80,8 +81,8 @@ class ServerThread extends Thread {
             // 継続的に読み取り
             while ((hasRead = in.read(buff)) > 0) {
                 /*
-                * WebSocketプロトコール 3～6は隠しコード 7バイト目からがデータ 3～6で後ろのデータを処理
-                */
+                 * WebSocketプロトコール 3～6は隠しコード 7バイト目からがデータ 3～6で後ろのデータを処理
+                 */
                 for (int i = 0; i < hasRead - 6; i++) {
                     buff[i + 6] = (byte) (buff[i % 4 + 2] ^ buff[i + 6]);
                 }
@@ -92,7 +93,7 @@ class ServerThread extends Thread {
                         .hasNext();) {
                     try {
                         Socket s = it.next();
-                        //  送信する際に、2バイトは必ず受信と同じである必要がある
+                        // 送信する際に、2バイトは必ず受信と同じである必要がある
                         byte[] pushHead = new byte[2];
                         pushHead[0] = buff[0];
                         // 長さ
@@ -120,11 +121,11 @@ class ServerThread extends Thread {
     }
 
     /**
-    * WebSocketのキー取得
-    *
-    * @param req
-    * @return
-    */
+     * WebSocketのキー取得
+     *
+     * @param req
+     * @return
+     */
     private String getSecWebSocketKey(String req) {
         Pattern p = Pattern.compile("^(Sec-WebSocket-Key:).+",
                 Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
@@ -139,12 +140,12 @@ class ServerThread extends Thread {
     }
 
     /**
-    * WebSocketのSecKeyからSecAccept計算
-    *
-    * @param key
-    * @return
-    * @throws Exception
-    */
+     * WebSocketのSecKeyからSecAccept計算
+     *
+     * @param key
+     * @return
+     * @throws Exception
+     */
     private String getSecWebSocketAccept(String key) throws Exception {
 
         String guid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";

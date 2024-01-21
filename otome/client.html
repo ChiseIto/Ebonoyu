@@ -4,31 +4,16 @@
     <head>
         <link rel="stylesheet" href="design.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title> WebSocket通信 </title>
+        <title> ゑぼの湯 </title>
         <script type="text/javascript">
-            var point = 0;
             // Web Socketオブジェクト生成
             var webSocket = new WebSocket("ws://127.0.0.1:30000");
             webSocket.onopen = function() {
-            document.getElementById('show').innerHTML += "接続しました。" + "<br/>";
-                if(point < 100) {
-                    // onmessageリスナー
-                    webSocket.onmessage = function(event) {
-                        // 取得＆表示
-                        document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
-                    }
-                    if(event.data == "好き") {
-                        point += 10;
-                    }
-                    else if(event.data == "大好き") {
-                        point += 20;
-                    }
-                    else if(event.data == "愛してる") {
-                        point += 100;
-                    }
-                }
-                else {
-                    document.getElementById('show').innerHTML += "面白れぇ女..." + "<br/>";
+                document.getElementById('show').innerHTML += "接続しました。" + "<br/>";
+                // onmessageリスナー
+                webSocket.onmessage = function(event) {
+                    // 取得＆表示
+                    document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
                 }
             };
             var sendMsg = function(val) {
@@ -44,7 +29,7 @@
     <body>
         <div class="menu">
             <ul>
-                <li><a href="default.asp">Room</a></li>
+                <li><a href="./Room.html">Room</a></li>
                 <li><a href="news.asp">News</a></li>
                 <li><a href="contact.asp">Contact</a></li>
                 <li><a href="about.asp">About</a></li>
@@ -64,7 +49,7 @@
 
         <div class="content">
             <div class="ikemen">
-                <img src="ikemen.png" alt="">
+                <img src="image/ikemen.png" alt="">
             </div>
 
             <div class="client">
