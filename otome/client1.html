@@ -15,6 +15,13 @@
                     // 取得＆表示
                     document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
                 }
+                /*webSocket.onmessage = function(point) {
+                    function changeGaugeValue() {
+                        const gaugeValue = document.querySelector(".gauge-value");
+                        const newValue = point.data;
+                        gaugeValue.style.width = newValue + "%";
+                    }
+                }*/
             };
             var sendMsg = function(val) {
                 var inputElement = document.getElementById('msg');
@@ -35,17 +42,24 @@
                 <li><a href="about.asp">About</a></li>
             </ul>
         </div>
+        
+        <div class="gauge">
+            <div class="gauge-value" style="width:0%;"></div>
+        </div>
 
-        <div class="select">
-            <button type="submit" onclick="select('1')"><img src="image/ikemen.png"></button>
-            <button type="submit" onclick="select('2')"><img src="image/ikemen2.png"></button>
-            <button type="submit" onclick="select('3')"><img src="image/ikemen3.png"></button>
-            <script>
-                function select(num) {
-                    console.log(num);
-                    location.href="./client" + num + ".html";
-                }
-            </script>
+        <div class="content">
+            <div class="ikemen">
+                <img src="image/ikemen.png" alt="">
+            </div>
+
+            <div class="client">
+                <div class="text">
+                    <div style="width:500px;height:200px;
+                        overflow-y:auto;border:1px solid #333;" id="show"></div>
+                    <input type="text" size="80" id="msg" name="msg" />
+                    <input type="button" value="送信" onclick="sendMsg(); changeGaugeValue();" />
+                </div>
+            </div>
         </div>
     </body>
 

@@ -7,7 +7,7 @@
         <title> ゑぼの湯 </title>
         <script type="text/javascript">
             // Web Socketオブジェクト生成
-            var webSocket = new WebSocket("ws://127.0.0.1:30000");
+            var webSocket = new WebSocket("ws://127.0.0.1:20000");
             webSocket.onopen = function() {
                 document.getElementById('show').innerHTML += "接続しました。" + "<br/>";
                 // onmessageリスナー
@@ -36,16 +36,10 @@
             </ul>
         </div>
 
-        <div class="select">
-            <button type="submit" onclick="select('1')"><img src="image/ikemen.png"></button>
-            <button type="submit" onclick="select('2')"><img src="image/ikemen2.png"></button>
-            <button type="submit" onclick="select('3')"><img src="image/ikemen3.png"></button>
-            <script>
-                function select(num) {
-                    console.log(num);
-                    location.href="./client" + num + ".html";
-                }
-            </script>
+        <div class="Info">
+            <ul>
+                <li></li>
+            </ul>
         </div>
     </body>
 

@@ -13,7 +13,7 @@
                 // onmessageリスナー
                 webSocket.onmessage = function(event) {
                     // 取得＆表示
-                    document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
+                    document.getElementById('show').innerHTML += "「" + event.data + "」って言ってほしい？" + "<br/>";
                 }
             };
             var sendMsg = function(val) {
@@ -35,17 +35,31 @@
                 <li><a href="about.asp">About</a></li>
             </ul>
         </div>
+        
+        <script>
+            function changeGaugeValue() {
+              const gaugeValue = document.querySelector(".gauge-value");
+              const newValue = point;
+              gaugeValue.style.width = newValue + "%";
+            }
+        </script>
+        <div class="gauge">
+            <div class="gauge-value" style="width:0%;"></div>
+        </div>
 
-        <div class="select">
-            <button type="submit" onclick="select('1')"><img src="image/ikemen.png"></button>
-            <button type="submit" onclick="select('2')"><img src="image/ikemen2.png"></button>
-            <button type="submit" onclick="select('3')"><img src="image/ikemen3.png"></button>
-            <script>
-                function select(num) {
-                    console.log(num);
-                    location.href="./client" + num + ".html";
-                }
-            </script>
+        <div class="content">
+            <div class="ikemen">
+                <img src="image/ikemen3.png" alt="">
+            </div>
+
+            <div class="client">
+                <div class="text">
+                    <div style="width:500px;height:200px;
+                        overflow-y:auto;border:1px solid #333;" id="show"></div>
+                    <input type="text" size="80" id="msg" name="msg" />
+                    <input type="button" value="送信" onclick="sendMsg(); changeGaugeValue();" />
+                </div>
+            </div>
         </div>
     </body>
 
