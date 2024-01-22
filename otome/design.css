@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+}
+
+.menu {
+  background-color: pink;
+}
+.menu ul {
+  display: flex;
+  justify-content: flex-start;
+}
+.menu li {
+  margin-left: 5%;
+  list-style: none;
+}
+.gauge {
+  width: 80%;
+  height: 20px;
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+.gauge-value {
+  height: 20px;
+  background-color:deeppink;
+  border-radius: 10px;
+}
+.ikemen {
+  background-color: aquamarine;
+}
+.ikemen img {
+  width: 100%;
+  height:auto;
+}
+.client {
+  background-color: coral;
+  width:70%;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+}
+.select img {
+  width: 100%;
+  height:auto;
+}

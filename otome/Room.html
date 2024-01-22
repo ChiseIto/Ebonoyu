@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="design.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title> ゑぼの湯 </title>
+        <script type="text/javascript">
+            // Web Socketオブジェクト生成
+            var webSocket = new WebSocket("ws://127.0.0.1:30000");
+            webSocket.onopen = function() {
+                document.getElementById('show').innerHTML += "接続しました。" + "<br/>";
+                // onmessageリスナー
+                webSocket.onmessage = function(event) {
+                    // 取得＆表示
+                    document.getElementById('show').innerHTML += "「" + event.data + "」って言ったね..." + "<br/>";
+                }
+            };
+            var sendMsg = function(val) {
+                var inputElement = document.getElementById('msg');
+                // 送信
+                webSocket.send(inputElement.value);
+                // クリア
+                inputElement.value = "";
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="menu">
+            <ul>
+                <li><a href="Room.asp">Room</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
+        </div>
+
+        <div class="select">
+            <button type="submit" onclick="select('1')"><img src="image/ikemen.png"></button>
+            <button type="submit" onclick="location.href='./client.html'"><img src="image/ikemen2.png"></button>
+            <button type="submit" onclick="location.href='./client.html'"><img src="image/ikemen3.png"></button>
+            <script>
+                function select(num) {
+                    console.log(num);
+                    location.href="./client.html";
+                }
+            </script>
+        </div>
+    </body>
+
+</html>
